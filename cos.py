@@ -34,6 +34,8 @@ class cos():
         for i in range(0,sg_count):
             for j in range(0,sg_count):
                 res = self.cosine(i,j,matrix)
+
+                res = 1 if res >=0.5 else 0
                 cos_matrix[i][j]=res
         return cos_matrix
 
