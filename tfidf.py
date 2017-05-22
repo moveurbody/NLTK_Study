@@ -3,6 +3,7 @@
 # @Author  : Yuhsuan
 # @File    : tfidf.py
 # @Software: PyCharm Community Edition
+# 算出tf-idf
 
 import numpy as np
 import csv
