@@ -27,7 +27,7 @@ class cos():
         result = 1 - spatial.distance.cosine(matrix[a], matrix[b])
         return result
 
-    def get_matrix(self,matrix):
+    def get_matrix(self,matrix,rate):
         sg_count=self.sg_count
         cos_matrix = np.arange(sg_count*sg_count).reshape(sg_count,sg_count)
 
@@ -35,18 +35,18 @@ class cos():
             for j in range(0,sg_count):
                 res = self.cosine(i,j,matrix)
 
-                res = 1 if res >=0.5 else 0
+                res = 1 if res >=rate else 0
                 cos_matrix[i][j]=res
         return cos_matrix
 
     def savefile(self,output,matrix):
         np.savetxt(output,matrix, delimiter=",")
 
-    def main(self,input,output):
+    def main(self,input,output,rate):
         matrix = self.readfile(input)
-        res = self.get_matrix(matrix)
+        res = self.get_matrix(matrix,rate)
         self.savefile(output,res)
 
 if __name__=="__main__":
     cos = cos()
-    cos.main('CNN/combine_tfidf.csv','CNN/combine_relation.csv')
+    cos.main('CNN/combine_tfidf.csv','CNN/combine_relation.csv',1)
